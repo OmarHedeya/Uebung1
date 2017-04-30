@@ -103,3 +103,182 @@ Caused by: org.apache.maven.model.building.ModelBuildingException: 1 problem was
 2017-04-30 14:46:23,369 [Worker-16] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
 2017-04-30 14:47:24,108 [Worker-10] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
 2017-04-30 14:47:24,108 [Worker-10] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 14:51:37,070 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 14:51:37,071 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 14:51:37,073 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 14:51:37,074 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 14:51:58,874 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-04-30 14:51:58,875 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 14:52:24,581 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.1/plexus-classworlds-2.5.1-sources.jar
+2017-04-30 14:52:24,805 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.1/plexus-classworlds-2.5.1-sources.jar
+2017-04-30 14:52:25,058 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/takari/aether/takari-local-repository/0.9.0/takari-local-repository-0.9.0-sources.jar
+2017-04-30 14:52:25,112 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/takari/aether/takari-local-repository/0.9.0/takari-local-repository-0.9.0-sources.jar
+2017-04-30 14:52:25,486 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/takari/takari-filemanager/0.7.0/takari-filemanager-0.7.0-sources.jar
+2017-04-30 14:52:25,550 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/takari/takari-filemanager/0.7.0/takari-filemanager-0.7.0-sources.jar
+2017-04-30 14:52:25,775 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.1/maven-core-3.2.1-sources.jar
+2017-04-30 14:52:25,992 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.1/maven-core-3.2.1-sources.jar
+2017-04-30 14:52:26,227 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.1/maven-model-3.2.1-sources.jar
+2017-04-30 14:52:26,302 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.1/maven-model-3.2.1-sources.jar
+2017-04-30 14:52:26,500 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.1/maven-settings-3.2.1-sources.jar
+2017-04-30 14:52:26,564 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.1/maven-settings-3.2.1-sources.jar
+2017-04-30 14:52:26,747 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.1/maven-settings-builder-3.2.1-sources.jar
+2017-04-30 14:52:26,825 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.1/maven-settings-builder-3.2.1-sources.jar
+2017-04-30 14:52:27,046 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.1/maven-repository-metadata-3.2.1-sources.jar
+2017-04-30 14:52:27,126 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.1/maven-repository-metadata-3.2.1-sources.jar
+2017-04-30 14:52:27,325 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.1/maven-artifact-3.2.1-sources.jar
+2017-04-30 14:52:27,442 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.1/maven-artifact-3.2.1-sources.jar
+2017-04-30 14:52:27,683 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.1/maven-plugin-api-3.2.1-sources.jar
+2017-04-30 14:52:27,752 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.1/maven-plugin-api-3.2.1-sources.jar
+2017-04-30 14:52:28,182 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.1/maven-model-builder-3.2.1-sources.jar
+2017-04-30 14:52:28,293 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.1/maven-model-builder-3.2.1-sources.jar
+2017-04-30 14:52:28,517 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.1/maven-aether-provider-3.2.1-sources.jar
+2017-04-30 14:52:28,590 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.1/maven-aether-provider-3.2.1-sources.jar
+2017-04-30 14:52:28,792 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/0.9.0.M2/aether-api-0.9.0.M2-sources.jar
+2017-04-30 14:52:28,973 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/0.9.0.M2/aether-api-0.9.0.M2-sources.jar
+2017-04-30 14:52:29,270 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2-sources.jar
+2017-04-30 14:52:29,432 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2-sources.jar
+2017-04-30 14:52:29,669 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.19/plexus-interpolation-1.19-sources.jar
+2017-04-30 14:52:29,851 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.19/plexus-interpolation-1.19-sources.jar
+2017-04-30 14:52:30,113 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.17/plexus-utils-3.0.17-sources.jar
+2017-04-30 14:52:30,440 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.17/plexus-utils-3.0.17-sources.jar
+2017-04-30 14:52:30,683 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5-sources.jar
+2017-04-30 14:52:30,825 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5-sources.jar
+2017-04-30 14:52:31,021 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3-sources.jar
+2017-04-30 14:52:31,110 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3-sources.jar
+2017-04-30 14:52:31,418 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-embedder/3.2.1/maven-embedder-3.2.1-sources.jar
+2017-04-30 14:52:31,543 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-embedder/3.2.1/maven-embedder-3.2.1-sources.jar
+2017-04-30 14:52:31,839 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.7/plexus-cipher-1.7-sources.jar
+2017-04-30 14:52:31,912 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.7/plexus-cipher-1.7-sources.jar
+2017-04-30 14:52:32,114 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2-sources.jar
+2017-04-30 14:52:32,258 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2-sources.jar
+2017-04-30 14:52:32,645 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-compat/3.2.1/maven-compat-3.2.1-sources.jar
+2017-04-30 14:52:32,757 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-compat/3.2.1/maven-compat-3.2.1-sources.jar
+2017-04-30 14:52:33,133 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/2.6/wagon-provider-api-2.6-sources.jar
+2017-04-30 14:52:33,208 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/2.6/wagon-provider-api-2.6-sources.jar
+2017-04-30 14:52:33,417 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.0/cdi-api-1.0-sources.jar
+2017-04-30 14:52:33,528 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.0/cdi-api-1.0-sources.jar
+2017-04-30 14:52:33,892 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/14.0.1/guava-14.0.1-sources.jar
+2017-04-30 14:52:34,308 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/14.0.1/guava-14.0.1-sources.jar
+2017-04-30 14:52:34,820 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/0.9.0.M2/aether-impl-0.9.0.M2-sources.jar
+2017-04-30 14:52:34,924 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/0.9.0.M2/aether-impl-0.9.0.M2-sources.jar
+2017-04-30 14:52:35,140 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/0.9.0.M2/aether-spi-0.9.0.M2-sources.jar
+2017-04-30 14:52:35,209 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/0.9.0.M2/aether-spi-0.9.0.M2-sources.jar
+2017-04-30 14:52:35,413 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/takari/aether/aether-connector-okhttp/0.12.0/aether-connector-okhttp-0.12.0-sources.jar
+2017-04-30 14:52:35,474 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/takari/aether/aether-connector-okhttp/0.12.0/aether-connector-okhttp-0.12.0-sources.jar
+2017-04-30 14:52:35,809 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/squareup/okhttp/okhttp/1.5.4/okhttp-1.5.4-sources.jar
+2017-04-30 14:52:35,912 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/squareup/okhttp/okhttp/1.5.4/okhttp-1.5.4-sources.jar
+2017-04-30 14:52:36,220 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-connector-wagon/0.9.0.M2/aether-connector-wagon-0.9.0.M2-sources.jar
+2017-04-30 14:52:36,277 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/aether/aether-connector-wagon/0.9.0.M2/aether-connector-wagon-0.9.0.M2-sources.jar
+2017-04-30 14:52:36,480 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-file/2.6/wagon-file-2.6-sources.jar
+2017-04-30 14:52:36,551 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-file/2.6/wagon-file-2.6-sources.jar
+2017-04-30 14:52:36,757 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar
+2017-04-30 14:52:37,019 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar
+2017-04-30 14:52:37,514 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-simple/1.7.5/slf4j-simple-1.7.5-sources.jar
+2017-04-30 14:52:37,577 [Worker-11] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-simple/1.7.5/slf4j-simple-1.7.5-sources.jar
+2017-04-30 14:54:55,837 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 14:54:55,838 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 14:54:55,841 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 14:54:55,841 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 14:55:08,396 [Worker-10] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-04-30 14:55:08,396 [Worker-10] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 15:01:33,299 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:01:33,300 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:01:33,304 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:01:33,304 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:04:30,619 [Worker-19] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: swt1:iMage:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\pom.xml.
+2017-04-30 15:06:42,417 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:jmjrst.main:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:06:42,594 [Worker-18] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /jmjrst.main/src/main/java
+2017-04-30 15:06:42,596 [Worker-18] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /jmjrst.main/src/main/resources
+2017-04-30 15:06:42,601 [Worker-18] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /jmjrst.main/src/test/java
+2017-04-30 15:06:42,602 [Worker-18] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /jmjrst.main/src/test/resources
+2017-04-30 15:06:43,762 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:jmjrst.main:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:06:43,981 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:06:43,981 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:06:43,983 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:06:43,983 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:06:44,914 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:jmjrst.main:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:06:45,163 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: swt1:iMage:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\pom.xml.
+2017-04-30 15:06:45,237 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:jmjrst.main:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:06:45,464 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:06:45,464 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:06:45,466 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:06:45,466 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:08:01,181 [Worker-13] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:2083776:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:08:01,318 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:08:01,319 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:08:01,320 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:08:01,321 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:21:02,508 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:21:02,511 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 17 resources
+2017-04-30 15:21:02,561 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:21:02,561 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:26:02,868 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:26:02,871 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 17 resources
+2017-04-30 15:26:02,875 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:26:02,875 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:30:32,007 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:30:32,008 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:30:32,010 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:30:32,011 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-04-30 15:36:20,394 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:36:20,395 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:36:20,397 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:36:20,397 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:37:29,193 [Worker-15] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\target
+2017-04-30 15:37:29,193 [Worker-15] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 15:38:03,330 [Worker-21] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main
+2017-04-30 15:38:03,330 [Worker-21] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 15:39:55,906 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:39:55,910 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 17 resources
+2017-04-30 15:39:55,914 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:39:55,914 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:40:26,131 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:40:26,131 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:40:26,132 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:40:26,132 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:41:51,325 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:41:51,326 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:41:51,331 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:41:51,332 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:44:07,277 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:44:07,277 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:44:07,281 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:44:07,281 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:46:18,881 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:46:18,882 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:46:18,887 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:46:18,888 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:46:24,440 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2017-04-30 15:46:34,829 [Worker-15] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main
+2017-04-30 15:46:34,829 [Worker-15] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 15:48:02,073 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:48:02,074 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:48:02,077 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:48:02,078 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:48:12,417 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main
+2017-04-30 15:48:12,417 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 15:49:00,273 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:49:00,273 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:49:00,274 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:49:00,275 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:49:01,316 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:49:01,317 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:49:01,319 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:49:01,320 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:49:05,203 [Worker-24] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main
+2017-04-30 15:49:05,203 [Worker-24] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 15:57:58,856 [Worker-22] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:2083776:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:57:59,069 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:57:59,069 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:57:59,072 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:57:59,072 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:58:26,288 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:2083776:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 15:58:26,344 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:58:26,344 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 15:58:26,346 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 15:58:26,346 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 16:01:39,631 [Worker-25] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: swt1.ub1.a1:2083776:0.0.1-SNAPSHOT @ F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage\jmjrst.main\pom.xml.
+2017-04-30 16:01:39,679 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 16:01:39,679 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 16:01:39,680 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 16:01:39,681 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
