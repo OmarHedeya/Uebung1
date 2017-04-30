@@ -23,7 +23,6 @@
 				<include>gitignore.gitignore</include>
 				<include>*.launch</include>
 				<include>LICENSE</include>
-				<include>ReadMe_Warning.txt</include>
 			</includes> 
 		    
 		</fileSet>

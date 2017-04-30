@@ -1,4 +1,16 @@
 <changelog><commit>
+					<time>1493563050</time>
+					<sha1>934895ab25e87c86cecd2036b7e9d42acc0d5e64</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>warnings managed</msg>
+				</commit><commit>
+					<time>1493561941</time>
+					<sha1>3a63fd94c520bd39c39a3269c6f864513261dfcc</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>before correction</msg>
+				</commit><commit>
 					<time>1493556844</time>
 					<sha1>bb64c24e7917fb7f08c0ae64b9468b9df07420b0</sha1>
 					<author>Omar Hedeya</author>
