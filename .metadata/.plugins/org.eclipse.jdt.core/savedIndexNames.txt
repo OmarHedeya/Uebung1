@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+F:\KIT\4te Semester\SoftwareTechnik\Workspace2\.metadata\.plugins\org.eclipse.jdt.core
