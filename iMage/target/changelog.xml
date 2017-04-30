@@ -1,4 +1,10 @@
 <changelog><commit>
+					<time>1493563923</time>
+					<sha1>01ebe567abb08f685baffb447d91a20774cf043c</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>final version</msg>
+				</commit><commit>
 					<time>1493563050</time>
 					<sha1>934895ab25e87c86cecd2036b7e9d42acc0d5e64</sha1>
 					<author>Omar Hedeya</author>
