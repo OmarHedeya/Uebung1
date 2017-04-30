@@ -37,7 +37,4 @@
 			<outputDirectory>docs</outputDirectory>
 		</fileSet>
 	</fileSets>
-	
-	
-	
 </assembly>

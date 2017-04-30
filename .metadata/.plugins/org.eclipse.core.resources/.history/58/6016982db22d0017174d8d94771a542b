@@ -61,14 +61,12 @@ public class LayoutGalerie {
     this.m = main;
     this.layout = l;
 
-    if (this.directory.isDirectory() && this.directory.listFiles().length > 0) { 
-    	//Line was longer than 120 characters and bracket should have been on the same column as method
-      int response = JOptionPane.showConfirmDialog(m.list, m.mes.getString("Generator.53") + " " 
-    	+ o.getOutput_dir_gallerie() 
-    	+ " " + m.mes.getString("Generator.54"), m.mes.getString("Generator.52"), JOptionPane.YES_NO_OPTION);
-      if (response != JOptionPane.YES_OPTION) { //return and the two brackets should be on different lines 
-    	  return; 
-      }
+    if (this.directory.isDirectory() && this.directory.listFiles().length > 0)
+    { //Line was longer than 120 characters
+      int response = JOptionPane.showConfirmDialog(m.list, m.mes.getString("Generator.53") + " " + 
+    o.getOutput_dir_gallerie() + 
+    		  " " + m.mes.getString("Generator.54"), m.mes.getString("Generator.52"), JOptionPane.YES_NO_OPTION);
+      if (response != JOptionPane.YES_OPTION) { return; }
     }
 
     if (m.list.getSelectedValues().size() == 0) this.images = m.list.getPictures();
