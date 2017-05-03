@@ -415,3 +415,127 @@ Caused by: org.apache.maven.model.building.ModelBuildingException: 1 problem was
 2017-04-30 16:58:37,806 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2017-04-30 16:58:37,812 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2017-04-30 16:58:37,813 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:43:26,949 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:43:26,953 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2017-04-30 17:43:26,960 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:43:26,960 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:43:57,802 [Worker-30] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-04-30 17:43:57,802 [Worker-30] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 17:44:48,073 [Worker-12] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-04-30 17:44:48,073 [Worker-12] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-04-30 17:46:04,250 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:46:04,250 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:46:04,252 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:46:04,253 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:46:05,326 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:46:05,327 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:46:05,331 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:46:05,331 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:46:09,762 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:46:09,762 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:46:09,764 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-30 17:46:09,765 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-30 17:46:19,129 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-04-30 17:46:19,129 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:12:31,998 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:12:32,009 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-05-03 12:12:32,063 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:12:32,064 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:12:52,045 [Worker-69] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:12:52,046 [Worker-69] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:24:42,155 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:24:42,156 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:24:42,159 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:24:42,159 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:24:43,192 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:24:43,193 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:24:43,196 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:24:43,197 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:25:19,544 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:25:19,544 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:25:19,547 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:25:19,547 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:25:49,115 [Worker-82] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:25:49,115 [Worker-82] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:32:38,770 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:32:38,771 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:32:38,772 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:32:38,772 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:32:39,785 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:32:39,785 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:32:39,786 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:32:39,787 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:32:42,685 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:32:42,685 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:32:42,687 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:32:42,687 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:32:52,975 [Worker-68] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:32:52,976 [Worker-68] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:33:33,760 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:33:33,760 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:34:07,960 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:34:07,961 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:34:07,963 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:34:07,963 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:34:08,986 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:34:08,987 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:34:08,989 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:34:08,989 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:34:10,489 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:34:10,489 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:34:10,491 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:34:10,491 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:34:26,605 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:34:26,605 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:37:37,608 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:37:37,609 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:37:37,613 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:37:37,614 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:37:38,692 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:37:38,693 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:37:38,700 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:37:38,701 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:46:54,583 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:46:54,584 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:46:54,586 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:46:54,586 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:47:02,291 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:47:02,291 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:47:02,294 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:47:02,294 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:47:12,858 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:47:12,858 [Worker-62] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:47:30,583 [Worker-76] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:47:30,583 [Worker-76] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:48:00,467 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:48:00,467 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:48:00,469 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:48:00,470 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:48:01,500 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:48:01,501 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:48:01,504 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:48:01,505 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:48:04,190 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:48:04,190 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:48:04,192 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:48:04,192 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:48:13,774 [Worker-83] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:48:13,774 [Worker-83] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:48:28,797 [Worker-76] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:48:28,797 [Worker-76] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:49:24,654 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:49:24,655 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:49:24,656 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:49:24,656 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:49:25,729 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:49:25,730 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:49:25,733 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:49:25,734 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:50:22,122 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:50:22,123 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:50:22,149 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-05-03 12:50:22,149 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-05-03 12:50:30,526 [Worker-76] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:50:30,526 [Worker-76] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2017-05-03 12:50:44,736 [Worker-78] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
+2017-05-03 12:50:44,736 [Worker-78] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package

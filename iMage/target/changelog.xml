@@ -1,4 +1,16 @@
 <changelog><commit>
+					<time>1493566914</time>
+					<sha1>0bd56468f3d4516419373f56a50820b47daa8549</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>final</msg>
+				</commit><commit>
+					<time>1493565979</time>
+					<sha1>828456a6b095721227e346cc013ee4bcfa8398c4</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>new try</msg>
+				</commit><commit>
 					<time>1493563923</time>
 					<sha1>01ebe567abb08f685baffb447d91a20774cf043c</sha1>
 					<author>Omar Hedeya</author>
