@@ -1,26 +1,56 @@
 <changelog><commit>
+					<time>1493845022</time>
+					<sha1>e302454fd6d1a0edea42748bebd4fa862d7d8457</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>Before Merge2</msg>
+				</commit><commit>
+					<time>1493844917</time>
+					<sha1>819f625a9ce52f4938e33ecd77695e9b1d5c9066</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master</branches>
+					<msg>Before Merge</msg>
+				</commit><commit>
+					<time>1493844739</time>
+					<sha1>fdb338300ae307b33fdb34a4e61aa22761860f0d</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master,refs/heads/RotateImageTest</branches>
+					<msg>FINAL AFTER PATCH</msg>
+				</commit><commit>
+					<time>1493844626</time>
+					<sha1>f6103153c4add02b135b8cd5ea2e6cf448557bb7</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master,refs/heads/RotateImageTest</branches>
+					<msg>after 180 degree error was solved</msg>
+				</commit><commit>
+					<time>1493844576</time>
+					<sha1>43e101121b75aeb288f1809cea82da87fec95285</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/master,refs/heads/RotateImageTest</branches>
+					<msg>before 180 degree error was solved</msg>
+				</commit><commit>
 					<time>1493844068</time>
 					<sha1>bb6561f406b9e274fb1afd5c4bc4c71cc22ec59f</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest</branches>
 					<msg>Final Branch Name</msg>
 				</commit><commit>
 					<time>1493843549</time>
 					<sha1>896c111dc8e515f5dd78f88657e271c73dd24f69</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>FINAL</msg>
 				</commit><commit>
 					<time>1493843068</time>
 					<sha1>62471cc6990aea553e13f8817080be1ec73b46db</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>180 degree error solved</msg>
 				</commit><commit>
 					<time>1493842918</time>
 					<sha1>c0c5a92c55fcfeb21c85e2690ab267a2f6937492</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>before 180 degree error was solved</msg>
 				</commit><commit>
 					<time>1493838114</time>
