@@ -1,20 +1,38 @@
 <changelog><commit>
-					<time>1493838831</time>
-					<sha1>e6423806613eaf019a54c22ae5b15eb5d2bc737d</sha1>
+					<time>1493844068</time>
+					<sha1>bb6561f406b9e274fb1afd5c4bc4c71cc22ec59f</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest2</branches>
-					<msg>moving back to master</msg>
+					<branches>refs/heads/RotateImageTest</branches>
+					<msg>Final Branch Name</msg>
+				</commit><commit>
+					<time>1493843549</time>
+					<sha1>896c111dc8e515f5dd78f88657e271c73dd24f69</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
+					<msg>FINAL</msg>
+				</commit><commit>
+					<time>1493843068</time>
+					<sha1>62471cc6990aea553e13f8817080be1ec73b46db</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
+					<msg>180 degree error solved</msg>
+				</commit><commit>
+					<time>1493842918</time>
+					<sha1>c0c5a92c55fcfeb21c85e2690ab267a2f6937492</sha1>
+					<author>Omar Hedeya</author>
+					<branches>refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
+					<msg>before 180 degree error was solved</msg>
 				</commit><commit>
 					<time>1493838114</time>
 					<sha1>c5634efc656e68a880f3a631eef727777cf9dfcd</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest2</branches>
+					<branches></branches>
 					<msg>Finding the head</msg>
 				</commit><commit>
 					<time>1493837260</time>
 					<sha1>e6ce5745a356f21303ad5f170ed9248b886ed710</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>going back</msg>
 				</commit><commit>
 					<time>1493837162</time>
@@ -29,105 +47,51 @@
 					<branches></branches>
 					<msg>index on master: 48f61f9 final adjustment to A1</msg>
 				</commit><commit>
-					<time>1493830826</time>
-					<sha1>9bb2ce172117f4f39d82eb82090aa35c299f8511</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>last edit after patch</msg>
-				</commit><commit>
-					<time>1493830594</time>
-					<sha1>2c50f7bddf3a3d3cf187d6b50e7160e6e7d5d97e</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>last edit after patch</msg>
-				</commit><commit>
-					<time>1493830447</time>
-					<sha1>00bd41316d6f945f08dc1702c4521826e7b0b177</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>Edit after 180 degree patch final</msg>
-				</commit><commit>
-					<time>1493830393</time>
-					<sha1>9e982645c8652825054055ce403d859605fc6e7e</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>last edit before patch removing some tracing prints</msg>
-				</commit><commit>
-					<time>1493829728</time>
-					<sha1>10444884b07c917c271a568b8f8ddab91e7dece3</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>finalize branch after patch</msg>
-				</commit><commit>
-					<time>1493829437</time>
-					<sha1>d83f6e28c1b613649eee61f187d3234425aa1e8f</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>180 Degree error managed</msg>
-				</commit><commit>
-					<time>1493829387</time>
-					<sha1>5761e2e09ca07c9ddc8513330dc615211245cbad</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>All testcases working except for 180 Degree</msg>
-				</commit><commit>
-					<time>1493829216</time>
-					<sha1>ddc419f896569d43358efaa8131decaa2e19c9c9</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>Testcases corrected, 180 degree problem solved</msg>
-				</commit><commit>
-					<time>1493826361</time>
-					<sha1>1ed8b633f5703fbf3a3e3bd31c041743071b6a62</sha1>
-					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest</branches>
-					<msg>All test cases are running except for 180 degrees</msg>
-				</commit><commit>
 					<time>1493813763</time>
 					<sha1>ef5b475e81fef22062b2f7d451383d704585c2fa</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches></branches>
 					<msg>Test class addedd along with method setUp()</msg>
 				</commit><commit>
 					<time>1493809745</time>
 					<sha1>48f61f908694b0b5ae0e85a4729962156868bc2d</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>final adjustment to A1</msg>
 				</commit><commit>
 					<time>1493566914</time>
 					<sha1>0bd56468f3d4516419373f56a50820b47daa8549</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>final</msg>
 				</commit><commit>
 					<time>1493565979</time>
 					<sha1>828456a6b095721227e346cc013ee4bcfa8398c4</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>new try</msg>
 				</commit><commit>
 					<time>1493563923</time>
 					<sha1>01ebe567abb08f685baffb447d91a20774cf043c</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>final version</msg>
 				</commit><commit>
 					<time>1493563050</time>
 					<sha1>934895ab25e87c86cecd2036b7e9d42acc0d5e64</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>warnings managed</msg>
 				</commit><commit>
 					<time>1493561941</time>
 					<sha1>3a63fd94c520bd39c39a3269c6f864513261dfcc</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>before correction</msg>
 				</commit><commit>
 					<time>1493556844</time>
 					<sha1>bb64c24e7917fb7f08c0ae64b9468b9df07420b0</sha1>
 					<author>Omar Hedeya</author>
-					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest2,refs/heads/RotateImageTest</branches>
+					<branches>refs/heads/master,refs/heads/RotateImageTest3,refs/heads/RotateImageTest</branches>
 					<msg>first commit</msg>
 				</commit></changelog>
