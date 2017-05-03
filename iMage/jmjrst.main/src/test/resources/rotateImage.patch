@@ -1,0 +1,1108 @@
+From f6103153c4add02b135b8cd5ea2e6cf448557bb7 Mon Sep 17 00:00:00 2001
+From: Omar Hedeya <omar_yasser_55@hotmail.com>
+Date: Wed, 3 May 2017 22:50:26 +0200
+Subject: [PATCH] after 180 degree error was solved
+
+---
+ .../.history/48/b0e28c114230001717e0f1a5be3bba34   | 768 +++++++++++++++++++++
+ .../.plugins/org.eclipse.jdt.core/1582304053.index | Bin 33628 -> 33596 bytes
+ .../org.eclipse.m2e.logback.configuration/0.log    |  14 +
+ .../src/main/java/org/jis/generator/Generator.java |   6 +-
+ 4 files changed, 785 insertions(+), 3 deletions(-)
+ create mode 100644 .metadata/.plugins/org.eclipse.core.resources/.history/48/b0e28c114230001717e0f1a5be3bba34
+
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/48/b0e28c114230001717e0f1a5be3bba34 b/.metadata/.plugins/org.eclipse.core.resources/.history/48/b0e28c114230001717e0f1a5be3bba34
+new file mode 100644
+index 0000000..1d9c9f4
+--- /dev/null
++++ b/.metadata/.plugins/org.eclipse.core.resources/.history/48/b0e28c114230001717e0f1a5be3bba34
+@@ -0,0 +1,768 @@
++/*
++ * Copyright 2007 - 2009 Johannes Geppert 
++ * 
++ * Licensed under the GPL, Version 2.0 (the "License"); 
++ * you may not use this file except in compliance with the License.
++ * 
++ * You may obtain a copy of the License at
++ * http://www.fsf.org/licensing/licenses/gpl.txt 
++ * 
++ * Unless required by applicable law or agreed to in writing, 
++ * software distributed under the License is distributed on 
++ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied. See the License for the 
++ * specific language governing permissions and limitations under the License.
++ */
++package org.jis.generator;
++
++import java.awt.Color;
++import java.awt.Font;
++import java.awt.Graphics2D;
++import java.awt.Image;
++import java.awt.RenderingHints;
++import java.awt.geom.AffineTransform;
++import java.awt.image.AffineTransformOp;
++import java.awt.image.BufferedImage;
++import java.io.BufferedOutputStream;
++import java.io.File;
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
++import java.io.IOException;
++import java.util.Iterator;
++import java.util.Locale;
++import java.util.Vector;
++import java.util.zip.Deflater;
++import java.util.zip.ZipEntry;
++import java.util.zip.ZipOutputStream;
++
++import javax.imageio.IIOImage;
++import javax.imageio.ImageIO;
++import javax.imageio.ImageReadParam;
++import javax.imageio.ImageReader;
++import javax.imageio.ImageTypeSpecifier;
++import javax.imageio.ImageWriteParam;
++import javax.imageio.ImageWriter;
++import javax.imageio.metadata.IIOMetadata;
++import javax.imageio.metadata.IIOMetadataController;
++import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
++import javax.imageio.stream.ImageInputStream;
++import javax.imageio.stream.ImageOutputStream;
++import javax.imageio.stream.MemoryCacheImageOutputStream;
++import javax.swing.JFileChooser;
++import javax.swing.JOptionPane;
++import javax.swing.ProgressMonitor;
++import javax.swing.filechooser.FileFilter;
++import javax.swing.filechooser.FileSystemView;
++
++import org.jis.Main;
++import org.jis.options.Options;
++
++/**
++ * @author <a href="http://www.jgeppert.com">Johannes Geppert</a>
++ * 
++ *         <p>
++ *         This class do the main work and resize the images.
++ *         </p>
++ */
++public class Generator {
++  public final static double ROTATE_90  = Math.toRadians(90);
++  public final static double ROTATE_270 = Math.toRadians(270);
++  //public final static double ROTATE_180 = Math.toRadians(180);
++
++  private Main               m;
++  private Options            o;
++  private File               zipFile    = null;
++  private Vector<File>       zipIt;
++  private boolean            zippen     = false;
++  private float              quality;
++
++  /**
++   * @param m
++   *          a reference to the Main Class.
++   */
++  public Generator(Main m, float quality) {
++    super();
++    this.m = m;
++    this.o = Options.getInstance();
++    this.quality = quality;
++  }
++
++  /**
++   * @param zipFileName
++   *          File, the Name of the new ZIP-File
++   * @param selected
++   *          Vector, the Images for the ZIP-File
++   */
++  public void createZip(File zipFileName, Vector<File> selected)
++  {
++    try
++    {
++      byte[] buffer = new byte[ 4096];
++
++      // Create the new ZIP-Fiel and set the Options
++      ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFileName), 8096));
++      out.setLevel(Deflater.BEST_COMPRESSION);
++      out.setMethod(ZipOutputStream.DEFLATED);
++
++      // Loop about the Files and put it into the new ZIP-File
++      for (int i = 0; i < selected.size(); i++)
++      {
++        FileInputStream in = new FileInputStream(selected.get(i));
++
++        String file = selected.get(i).getPath();
++        if (file.indexOf("\\") != -1) file = file.substring(file.lastIndexOf(Options.fs) + 1, file.length());
++
++        ZipEntry ze = new ZipEntry(file);
++        out.putNextEntry(ze);
++        int len;
++        while ((len = in.read(buffer)) > 0)
++          out.write(buffer, 0, len);
++        out.closeEntry();
++        in.close();
++
++        // Delete the temp image
++        selected.get(i).delete();
++      }
++      out.close();
++    }
++    catch (IllegalArgumentException iae)
++    {
++      iae.printStackTrace();
++    }
++    catch (FileNotFoundException fnfe)
++    {
++      fnfe.printStackTrace();
++    }
++    catch (IOException ioe)
++    {
++      ioe.printStackTrace();
++    }
++  }
++
++  /**
++   * @param zip
++   *          boolean, should the output zipped?
++   */
++  public void generate(boolean zip)
++  {
++    //check if folder empty
++    if (!zip)
++    {
++      File outputDir = new File(o.getOutput_dir());
++
++      if (outputDir.isDirectory() && outputDir.listFiles().length > 0)
++      {
++        int response = JOptionPane.showConfirmDialog(m.list, m.mes.getString("Generator.53") + " " + o.getOutput_dir() + " " + m.mes.getString("Generator.54"), m.mes.getString("Generator.52"), JOptionPane.YES_NO_OPTION);
++        if (response != JOptionPane.YES_OPTION) { return; }
++      }
++    }
++
++    this.quality = o.getQuality();
++    try
++    {
++      zipIt = new Vector<File>();
++      zippen = false;
++      zipFile = null;
++
++      // if zip true, get the ZIP-File
++      if (zip)
++      {
++        zippen = true;
++        JFileChooser fo = new JFileChooser();
++        fo.setFileFilter(new FileFilter()
++        {
++          public boolean accept(File f)
++          {
++            return f.isDirectory() || f.getName().toLowerCase().endsWith(".zip");
++          }
++
++          public String getDescription()
++          {
++            return "ZIP-Datei";
++          }
++        });
++
++        fo.setFileSelectionMode(JFileChooser.FILES_ONLY);
++        fo.setCurrentDirectory(FileSystemView.getFileSystemView().getParentDirectory(new File(o.getOutput_dir())));
++        int returnVal = fo.showOpenDialog(null);
++        if (returnVal == JFileChooser.APPROVE_OPTION) zipFile = fo.getSelectedFile();
++      }
++
++      File[] dir = new File[ 0];
++      // generate only selected Images or the whole directory?
++      if (m.list.getSelectedValues().size() == 0) dir = m.list.getPictures();
++      else if (m.list.getSelectedValues().size() > 0 && m.list.getSelectedValues().size() < m.list.getPictures().length)
++      {
++        int response = JOptionPane.showConfirmDialog(m.list, m.mes.getString("Generator.23"), m.mes.getString("Generator.24"), JOptionPane.YES_NO_CANCEL_OPTION);
++        switch (response)
++        {
++        case JOptionPane.YES_OPTION:
++          Vector<File> vf = m.list.getSelectedValues();
++          dir = new File[ vf.size()];
++          for (int i = 0; i < dir.length; i++)
++            dir[i] = vf.get(i);
++          ;
++          break; // generate only the selected images
++        case JOptionPane.NO_OPTION:
++          dir = m.list.getPictures();
++          break; // generate the whole directory
++        case JOptionPane.CANCEL_OPTION:
++          return; // do nothing
++        case JOptionPane.CLOSED_OPTION:
++          return; // do nothing
++        }
++      }
++      else
++      {
++        Vector<File> vf = m.list.getSelectedValues();
++        dir = new File[ vf.size()];
++        for (int i = 0; i < dir.length; i++)
++        {
++          dir[i] = vf.get(i);
++        }
++      }
++
++      final File files[] = dir;
++      Thread t = new Thread()
++      {
++        public void run()
++        {
++          String p_titel = files.length + m.mes.getString("Generator.28") + files[0].getParent() + m.mes.getString("Generator.29") + (Options.getInstance().getQuality() * 100) + m.mes.getString("Generator.30");
++          m.p_monitor = new ProgressMonitor(m, p_titel, m.mes.getString("Generator.10"), 0, files.length);
++          m.p_monitor.setMillisToPopup(0);
++          m.p_monitor.setMillisToDecideToPopup(0);
++          m.status.setStatusOn();
++          Element[] elements = new Element[ files.length];
++          for (int i = 0; i < files.length; i++)
++            elements[i] = new Element(i, files[i], Options.getInstance().getHmax(), Options.getInstance().getVmax(), new File(Options.getInstance().getOutput_dir()));
++
++          Producer producer = new Producer(m, elements, m.mes.getString("Generator.22"));
++          Thread producerThread = new Thread(producer);
++          int cpus = Runtime.getRuntime().availableProcessors();
++          Thread consumerThreads[] = new Thread[ cpus];
++          for (int i = 0; i < cpus; i++)
++          {
++            consumerThreads[i] = new Thread(new Consumer(producer, m, zippen, zipIt));
++          }
++
++          producerThread.start();
++          for (int i = 0; i < cpus; i++)
++          {
++            consumerThreads[i].start();
++          }
++
++          try
++          {
++            producerThread.join();
++            for (int i = 0; i < cpus; i++)
++            {
++              consumerThreads[i].join();
++            }
++          }
++          catch (InterruptedException ignore)
++          {
++          }
++
++          try
++          {
++            m.jOutputDoc.insertString(m.jOutputDoc.getLength(), Options.ls + m.mes.getString("Generator.44") + o.getOutput_dir() + m.mes.getString("Generator.45") + Options.ls, m.readyAtr);
++            m.text.setCaretPosition(m.jOutputDoc.getLength());
++          }
++          catch (Exception e)
++          {
++            System.out.println(Options.ls + m.mes.getString("Generator.46") + Options.ls);
++          }
++
++          // if zip, then zip
++          if (zippen && zipFile != null)
++          {
++            m.p_monitor.setNote("Erstelle Zipdatei");
++            createZip(zipFile, zipIt);
++          }
++          m.status.setStatusOff();
++          m.p_monitor.close();
++        }
++      };
++      t.start();
++
++    }
++    catch (Exception ex)
++    {
++      System.out.println(ex);
++    }
++  }
++
++  /**
++   * <p>
++   * scale the Image and write it to a specified Directory or File
++   * </p>
++   * 
++   * @param file
++   *          String, filename for the outputimage
++   * @param image
++   *          Image, the input image
++   * @param iout
++   *          File, the directory or file for the scaled image
++   * @param print
++   *          boolean, Logs for GUI
++   * @param width
++   *          int, width of the scaled image
++   * @param height
++   *          int, heigth of the scaled image
++   * @return File
++   * @throws IOException
++   * @throws ImageFormatException
++   */
++  public File generateImage(File imageFile, File iout, boolean print, int width, int height, String praefix) throws IOException
++  {
++
++    // Output Image
++    File fo = new File(iout, praefix + imageFile.getName());
++
++    ImageInputStream iis = ImageIO.createImageInputStream(imageFile);
++    Iterator<ImageReader> readers = ImageIO.getImageReaders(iis);
++    ImageReader reader = readers.next();
++    reader.setInput(iis, true);
++    BufferedImage image = reader.read(0, null);
++
++    IIOMetadata imageMetadata = reader.getImageMetadata(0);
++
++    try
++    {
++      // get width and height of the origianl image
++      int w = image.getWidth(null);
++      int h = image.getHeight(null);
++
++      // if image in landscape format?
++      if ((w >= h || height == 0) && width > 0)
++      {
++        double tmp = (double) w / width;
++        double h1 = h;
++        height = (int) (h1 / tmp);
++      }
++      else
++      {
++        double tmp = (double) h / height;
++        double w1 = w;
++        width = (int) (w1 / tmp);
++      }
++
++      // Create new Image
++      BufferedImage bimage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
++
++      // get graphics of the new Image
++      Graphics2D g = bimage.createGraphics();
++
++      // set quality of the new Image
++      g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
++
++      switch (Options.getInstance().getModus())
++      {
++      case Options.MODUS_QUALITY:
++        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
++        g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
++        break;
++
++      case Options.MODUS_DEFAULT:
++        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_DEFAULT);
++        g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_DEFAULT);
++        break;
++
++      case Options.MODUS_SPEED:
++        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
++        g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_SPEED);
++        break;
++
++      default:
++        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_DEFAULT);
++        g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_DEFAULT);
++        break;
++      }
++
++      if (Options.getInstance().isAntialiasing())
++      {
++        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
++      }
++      else
++      {
++        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
++      }
++      g.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
++
++      // set white Background of the new Image
++      g.setColor(Color.WHITE);
++      g.fillRect(0, 0, width, height);
++
++      // create a scaled instance of the new Image
++      Image scale;
++
++      if (width < 300 || height < 300) scale = image.getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING);
++      else scale = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
++      g.drawImage(scale, 0, 0, null);
++
++      int font_size = (int) (width * 0.02);
++
++      if (o.isCopyright())
++      {
++        g.setColor(new Color(o.getCopyright_r(), o.getCopyright_g(), o.getCopyright_b()));
++        Font font1 = new Font("Helvetica", Font.BOLD, font_size);
++        g.setFont(font1);
++        g.drawString(o.getCopyrightText(), font_size, height - (2 * font_size));
++      }
++
++      // Print process info for the GUI
++      if (print) try
++      {
++        m.jOutputDoc.insertString(m.jOutputDoc.getLength(), m.mes.getString("Generator.20"), m.outputAtr);
++        m.text.setCaretPosition(m.jOutputDoc.getLength());
++
++      }
++      catch (Exception e)
++      {
++        System.out.print(". . ");
++      }
++
++      // create new File for the new Image
++      ImageWriter writer = ImageIO.getImageWritersByFormatName("jpg").next();
++      ImageOutputStream ios;
++
++      if (iout.isDirectory())
++      {
++        ios = new MemoryCacheImageOutputStream(new FileOutputStream(fo));
++      }
++      else
++      {
++        ios = new MemoryCacheImageOutputStream(new FileOutputStream(iout));
++      }
++      writer.setOutput(ios);
++
++      JPEGImageWriteParam iwparam = new JPEGImageWriteParam(Locale.getDefault());
++      iwparam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
++
++      // set JPEG Quality
++      iwparam.setCompressionQuality(o.getQuality());
++      iwparam.setOptimizeHuffmanTables(true);
++
++      // copy the metadata
++      if (o.isCopyMetadata())
++      {
++        writer.write(null, new IIOImage(bimage, null, imageMetadata), iwparam);
++      }
++      else
++      {
++        writer.write(null, new IIOImage(bimage, null, null), iwparam);
++      }
++
++      bimage.getGraphics().dispose();
++      writer.dispose();
++
++    }
++    catch (Exception l)
++    {
++      m.error = true;
++    }
++
++    return fo;
++  }
++
++  /**
++   * <p>
++   * rotate the Image and write it to the File
++   * </p>
++   * 
++   * @param file
++   *          File
++   */
++  public void rotate(File file)
++  {
++    BufferedImage i = null;
++    IIOMetadata imeta = null;
++
++    try
++    {
++      ImageInputStream iis = ImageIO.createImageInputStream(file);
++      ImageReader reader = ImageIO.getImageReadersByFormatName("jpg").next();
++      reader.setInput(iis, true);
++      ImageReadParam params = reader.getDefaultReadParam();
++      i = reader.read(0, params);
++      imeta = reader.getImageMetadata(0);
++    }
++    catch (IOException e)
++    {
++      System.err.println("Error while reading File: " + file.getAbsolutePath());
++      e.printStackTrace();
++      return;
++    }
++
++    try
++    {
++      // get width and height of the original image
++      int w = i.getWidth(null);
++      int h = i.getHeight(null);
++      System.out.println("Width: " + w + " Height :" + h);
++
++      System.out.println("Drehe Bild:" + file.getAbsolutePath());
++      AffineTransform rotation = new AffineTransform();
++      AffineTransformOp rotator;
++      rotation.translate(h, 0);
++      rotation.rotate(90.0 * Math.PI / 180.0);
++
++      rotator = new AffineTransformOp(rotation, AffineTransformOp.TYPE_BICUBIC);
++      i = rotator.filter(i, null);
++      w = i.getWidth(null);
++      h = i.getHeight(null);
++      System.out.println("Width: " + w + " Height :" + h);
++
++      System.out.println("Speichere Bild:" + file.getAbsolutePath());
++      ImageWriter writer = ImageIO.getImageWritersByFormatName("jpg").next();
++
++      writer.setOutput(new MemoryCacheImageOutputStream(new FileOutputStream(file)));
++      ImageWriteParam iwparam = new JPEGImageWriteParam(Locale.getDefault());
++      iwparam.setCompressionMode(ImageWriteParam.MODE_COPY_FROM_METADATA);
++      IIOMetadata meta_convert = writer.convertImageMetadata(imeta, new ImageTypeSpecifier(i), iwparam);
++      IIOMetadataController imc = meta_convert.getController();
++      imc.activate(meta_convert);
++
++      writer.write(meta_convert, new IIOImage(i, null, imeta), iwparam);
++      writer.dispose();
++      System.out.println("Bild gespeichert!");
++    }
++    catch (Exception l)
++    {
++      m.error = true;
++    }
++  }
++
++  /**
++   * <p>
++   * Resize a single image
++   * </p>
++   * 
++   * @param file
++   *          File, input Image File
++   * @param image
++   *          BufferedImage, input Image
++   */
++  public void generateSingle(File file, BufferedImage image)
++  {
++
++    // where shuld the image saved?
++    JOptionPane.showMessageDialog(null, m.mes.getString("Generator.15"));
++
++    // select the output image
++    JFileChooser fo = new JFileChooser();
++    fo.setFileFilter(new FileFilter()
++    {
++      public boolean accept(File f)
++      {
++        return f.isDirectory() || f.getName().toLowerCase().endsWith(".jpg") || f.getName().toLowerCase().endsWith(".jpeg");
++      }
++
++      public String getDescription()
++      {
++        return "JPEG-Datei";
++      }
++    });
++
++    fo.setFileSelectionMode(JFileChooser.FILES_ONLY);
++    fo.setCurrentDirectory(FileSystemView.getFileSystemView().getParentDirectory(file));
++    int returnVal = fo.showOpenDialog(null);
++    if (returnVal == JFileChooser.APPROVE_OPTION)
++    {
++      m.status.setStatusOn();
++      try
++      {
++        // resize the image
++        generateImage(file, fo.getSelectedFile(), false, o.getHmax(), o.getVmax(), "");
++      }
++      catch (Exception e)
++      {
++        e.printStackTrace();
++      }
++      m.status.setStatusOff();
++
++      // show success message
++      JOptionPane.showMessageDialog(null, m.mes.getString("Generator.19"));
++    }
++  }
++
++  /**
++   * <p>
++   * Resize the Images without the GUI, when the Programm is started with
++   * Arguments
++   * </p>
++   * 
++   * @param input
++   *          File, the Input Directory
++   * @param output
++   *          File, the Output Directory
++   * @param width
++   *          int, width of the scaled image
++   * @param height
++   *          int, heigth of the scaled image
++   */
++  public void generateText(File input, File output, int width, int height)
++  {
++
++    // check if mass resize or single picture resize
++    if (input.isDirectory() && output.isDirectory()) try
++    {
++
++      // get all JPEGs of the directory
++      File[] dir = input.listFiles();
++      Vector<File> v = new Vector<File>();
++      for (int i = 0; i < dir.length; i++)
++        // text.setText(text.getText() + dir[i].toString() + "\n");
++        try
++        {
++          String end = dir[i].toString().substring(dir[i].toString().lastIndexOf(".") + 1, dir[i].toString().length());
++          if (dir[i].isFile() && (end.equalsIgnoreCase("jpg") || end.equalsIgnoreCase("jpeg"))) v.addElement(dir[i]);
++        }
++        catch (Exception st)
++        {
++        }
++
++      // print info message
++      System.out.println(v.size() + m.mes.getString("Generator.28") + input.toString() + m.mes.getString("Generator.29") + quality + m.mes.getString("Generator.30") + Options.ls + Options.ls);
++
++      // resize the images
++      for (int i = 0; i < v.size(); i++)
++      {
++        System.out.print(m.mes.getString("Generator.10") + v.elementAt(i).getName() + "\t . . . ");
++        generateImage(v.elementAt(i), output, true, o.getHmax(), o.getVmax(), m.mes.getString("Generator.22"));
++        System.out.println(m.mes.getString("Generator.12"));
++      }
++      System.out.println(Options.ls + v.size() + m.mes.getString("Generator.46") + Options.ls);
++    }
++    catch (Exception ex)
++    {
++      System.out.println(ex);
++    }
++    else if (input.isFile())
++    {
++      try
++      {
++        // resize single image
++        generateImage(input, output, true, o.getHmax(), o.getVmax(), m.mes.getString("Generator.22"));
++      }
++      catch (Exception e)
++      {
++        e.printStackTrace();
++      }
++    }
++  }
++
++  /**
++   * <p>
++   * <b>Not used because loose of Metadata and Quality</b> rotate the Image and
++   * write it to the File
++   * </p>
++   * 
++   * @param file
++   *          File
++   */
++  public void rotate(File file, int angel)
++  {
++    BufferedImage i = null;
++    IIOMetadata imeta = null;
++
++    try
++    {
++      ImageInputStream iis = ImageIO.createImageInputStream(file);
++      ImageReader reader = ImageIO.getImageReadersByFormatName("jpg").next();
++      reader.setInput(iis, true);
++      ImageReadParam params = reader.getDefaultReadParam();
++      i = reader.read(0, params);
++      imeta = reader.getImageMetadata(0);
++    }
++    catch (IOException e)
++    {
++      System.err.println("Error while reading File: " + file.getAbsolutePath());
++      e.printStackTrace();
++      return;
++    }
++
++    try
++    {
++      // get width and height of the origianl image
++      int w = i.getWidth(null);
++      int h = i.getHeight(null);
++      rotateImage(i, 90);
++      System.out.println("Width: " + w + " Height :" + h);
++
++      System.out.println("Drehe Bild:" + file.getAbsolutePath());
++      i = rotateImage(i, angel);
++
++      FileOutputStream fos = new FileOutputStream(file);
++
++      ImageWriter writer = ImageIO.getImageWritersByFormatName("jpg").next();
++      ImageOutputStream ios = ImageIO.createImageOutputStream(fos);
++      writer.setOutput(ios);
++      ImageWriteParam iwparam = new JPEGImageWriteParam(Locale.getDefault());
++      iwparam.setCompressionMode(ImageWriteParam.MODE_COPY_FROM_METADATA);
++
++      // set JPEG Quality
++      iwparam.setCompressionQuality(0.92f);
++      writer.write(imeta, new IIOImage(i, null, null), iwparam);
++      ios.flush();
++      writer.dispose();
++      ios.close();
++      fos.close();
++
++      System.out.println("Bild gespeichert!");
++    }
++    catch (Exception l)
++    {
++      m.error = true;
++    }
++  }
++
++  public BufferedImage rotateImage(BufferedImage image, double rotate)
++  {
++    if (rotate == 0) return image;
++
++    AffineTransform transform = new AffineTransform();
++
++    // get width and height of the origianl image
++    int width = image.getWidth(null);
++    int height = image.getHeight(null);
++
++    if (rotate == Generator.ROTATE_90)
++    {
++      transform.translate(height, 0);
++      transform.rotate(Generator.ROTATE_90);
++      width = image.getHeight(); // swap
++      height = image.getWidth();
++    }
++    else if (rotate == Generator.ROTATE_270)
++    {
++      transform.translate(0, width);
++      transform.rotate(Generator.ROTATE_270);
++      width = image.getHeight(null); // swap
++      height = image.getWidth(null);
++    }
++    
++    /*else if(rotate == Generator.ROTATE_180)
++    {
++    	transform.translate(height, 0);
++    	transform.rotate(Generator.ROTATE_90);
++    	transform.translate(height, 0);
++    	transform.rotate(Generator.ROTATE_90);
++        width = image.getWidth(); // swap
++        height = image.getHeight();
++    	
++    }*/
++    else
++    {
++      throw new IllegalArgumentException("degree must be a mutiple of 90�!");
++    }
++
++    // Return a new Image
++    BufferedImage returnImage = new BufferedImage(width, height, image.getColorModel().getColorSpace().getType());
++    Graphics2D g = returnImage.createGraphics();
++    g.drawImage(image, transform, null);
++
++    return returnImage;
++  }
++}
+diff --git a/.metadata/.plugins/org.eclipse.jdt.core/1582304053.index b/.metadata/.plugins/org.eclipse.jdt.core/1582304053.index
+index d7bd5d7bcc8a1b11779f92e7157b772124290019..cd1b8c3d02c89ded8c92f3618e6ff9e83378ba43 100644
+GIT binary patch
+delta 12289
+zcmZ`<TWllOc|Ig(cqetEq`hB!Svz)&^=_QlNj96MBub(zi84v8yz2z)kQzy|OL1sk
+zR=Y+~)=d!PDX@DA6bR6uM&BBssO#4TaQe~&MK38@pbtgU0!4w9WN*B;B3>oi@BhyX
+zIh3{!f`&8a`k(*u{ojB7{d@ku{+|E6L%tt=c=(3{m;OrVR&CY1DTMF`f+AKfRqXn$
+zhPA%Ydi?nDwum-2jcRqpT5WCM_l}6Q`Wwh!j~$bLIC5D2eBh~$wq{jLjHCsIM#qG{
+zZr02O4V)YnF&<~ubOzoLeyfH7ABjl4v}xC@mQ5{%&|4er%`(1xCIV~C8+f=U^r~Gk
+zs(5@L;%j!pTyNOz+G>efJrMdkRz2IIS^UQ|5pK52MXOac@oh(hTDD!CFnDD7#?(kB
+zY*x)pv({?j^XDQ`w$?o>ieAgLTlIEp%C7KI;_dpX(K1Vw4YP6`9qx({=9<P9@ncVf
+z>kWIgT`?Q@^;;3Ilv+l)w1Ew>q;^HZu2rg5<@$oTYPC1fXh+C@Ih>jc8`V<NddH+S
+zY>Rl=s9f*cP#CM~$=kO^TZ@f}5S>ibrrCCdkEC&58pFrGfdj#wOD(Hq(#u^DVX+&o
+zKz($M_eAhUi4KRK{naK04d|hm{ORG5j#e(&*J+m2m<YB?o5oE#>TMCM8n^5=i&jqw
+z&Ae&RP<KTHExKa61O2JkHQLO5JZ>86G{<cbty;}i$vwDj5k@C>S9iofK2yjo=O;6z
+ziRIMd)O-eg9*dyWoU&`w|8x1<p)osF>DM(8!E$gw>6X%!<fh%S)+Vb)v$<$&Qoo0o
+z*S4=iqwoR0?+T1T=d$G}@U94RgY}j=(b%fltTe28%d%_o-J#J=xM3Qrx7-<mYqs6u
+z6NctbEYnI$i|GZm+~hhe!)#b434;&)fg`^yObz+5G|uCh#KFrlTdc=-MY0J^thCJ4
+zd6qHSU}f3Gf?iB7PG;nLN5^sxM2tJttj%(p<a<}d8+MB{vTD_?)0@vkhz`|Vt=?0s
+zgu6CZ<`3kxp=0MG&C=U#qiVHoq4&1XHgGC<dH|{5xQe&xB*Yz@JU62@@`Epob+k>x
+zs*#2aj0vq}Hc1a|_u1k)j}ogl%r&!N)+(&spNa?#yJXZ{)r6jUv^dzrZrY@aelaM5
+zINT|V^!qm=2petOqAlJN0lU+t2_K0t6qOagQPw!Qss+dtW@_*Pyw;?aq??U~<66AF
+zgQj^Pv>WdJqii%5tsP$=*OtekI*Enc)N-Np#&UW-TfD+uL(nUTi<Y=6Xx}$1b87;&
+zj29$8@>ui{7Vdn^l5Nn+hek!BS;9=KW@8gBL^bmpRcBk#N@=sVscjMI)ceF1sy7UC
+z&7y<*9DdbodCnBpX)HDDy4m0(-Vu>}u9z-nN?&~$&G$s$TC>jbPIVVOYqROVTRIDM
+zzDKMYY^}6vH9F|Zs!hg%=UowZd|QEn1K#Y2s58&`SJgyu*4-_{7JG{}2uoB#EG%U*
+zQ#@d})qkA+Hu;?g!e5~ww?ztvQ>t5)mVE8-P)DmN6W<YWjM{JXnpIn~c@o_<^xv>|
+zpM*8Hluko$Z;~%Vh<Uqhw&^7z0Cop6v>Uf*(|Sk*NrPFm*b=)i$EG@1knWxqOtTv$
+zoiG%l;mfwNrjUhzW;r1%w#fm&HN+hec5Rd9L}=7#9$J`pRL7v^;WpB>)oC-xCiFo5
+z)8Kd~<k&Fv*J2_`+EVS8NRR>%hw$GB4H2(RZADZ>y6a|9M=B-d<dq(W>K^Ni8#UU4
+zWi+jtT1}X3Dcy10FFN-&y)FD}GzdgPgLolC%Bu>c3b|{G)ab4VmP-^>Xl;l+aV4m3
+zXxR~(UFT4}EkZX+bpABMy%{m0+yLoj$rYxWyE}79S$L${w?XBS+2iOT`HNRZItj<6
+zLJc-}uFpi*ce+60fk<@6E#jDYssL7lg$t3al=ew#yK7sEs`U;w_)`%qWF~Wqr2Dsp
+zMrwtpsrx`!b_0O`u8($yAUa*O4VDQ-{eGJy9|@x*feB3ntS0U9q5S!mU+hF@8b*D?
+zsx;3}(PwQ);Em<P7kV?262tUn!dRa~z-~3*(|O0cLht$}blayQ8aX!f*MuHT3B8FG
+zkeLFWSr#oAJ_WBtM~Db!)q|mEBJ~7Rqt7is3(@{AI@+oun=LIZniT!0NWWoJ+w3gk
+z36W$-IAuYNn+Vew<Bk}bMVPLd&1U9i#iZ!H!tn`v^agO9RumF_zQ~#HfR=hKKd@#q
+zLPBTx%S+?()n|{dYa7Z>-WOWkapV}<iyyGC9c->f$1@-TB#T%)ksL~mj*SBhL-gbw
+zb{$;cD4|GJ`_xDN=){qc;M}}XHYpy2qltmRp^?;>y!7?a4nhV-fW#|JlHjjJ;`Pjx
+zQa-admC0upXJ~6Uz<rK(PbAYzOZnX8Oewci%;px+ETF;OB8xfi8}fdeR;|tc@-|>3
+z7VLUcEE=YGR!JW?*kg?%QY6G)Gb~zfATf{<frd>8=)TNOAC+$%d*&5=l8`Gt>q1Kq
+z%3R1UE*CRsb6fZ<ypITy7KD`&zH9gmS1f;a?sO+)ZPks2LFjo8pqEDQ>2ZwUW560p
+z2%n9YA#@K#W9ZDmjUL{{Ybb52VUn5M7e1CZRI}$(d~{GcdL{;i?*^X9rs9RkG(cWq
+zA(t!8cGSF-90fw?>mx%T5&JgrkWlI#PYw(YlQ<Esy1wg<@NG~pL5<hlUX)kBj?h?N
+zbBsKo!OHcyqPx!Es@*Pg5(NdC35oEA(VVs`3=-fQC?T=1Dx85gAMn6HjpJBk)@W`3
+z_%h<(mcMv9)hXZNlifp4WJRVy1`}5%3pJ&LZ68{D61>*d%hhw3A855%=8S?A@sS7>
+zF=kn1T22~3+t-H1Mbv5*0Cq1E+C|%Y>>OQ`NRo*TBM{gPpdoyQtM5fOO=z(pp=HvA
+zA~hTs6ob>*e4$vH&o1JOis^h&9((%erM}>snBcLd4UX#=@;>y{Y&fptS0d8&Bp6c{
+z@qwX~{PEY0PEfi@v%ur*gUMk6*-nOWU+^yqMre#23hSdo!92I+i4#YECpv{+({^Li
+zP$+q@P-)oJDuG~y^=S@rkq01@MsX5fp;??cc#!QLfdtNs9?Bm)bL81IyQ;*sD*{Lt
+zX-JrF6p2`+-2k$rsXv!*XHusaHqrO^C{no1x;i|)Qnj13=1*k$#gR^b<{MN>Awu~!
+z5CHE}Bl8rxQHHBWFMv5G6LzGs=f!_Cn>K(mZLi^&(R>f;4hfP4!rbE6d;;DC&cv)C
+zL$t3C@{kGuYf0FWeE<AmnY%Q0x(|jAtT3A7;Dv}wiuZ~9^u<G+ei-2|6EX0p4;j;v
+z5M*4W1-*i}{AH5BBTx>I3#lf~7O8pFay8L~_1!4$FO%)vK~I%xtBj)4M@MiXPV?~$
+z9G}I=1dGC4%@U+8z$vjy1Nni?v=E0CO(Mob@-oBG3upt>brG{6bx$`M1}8)JMZ}GF
+zWW5P>P@QNjF_=P(iA`=8wRJOdLn#1Y$bRUlV|DBj9to|1)K+cU%{FM&+ISa#2Ng6z
+zn?2z-NpT+G|9R*Cm+&9R0bXT>VVNUG%DV3(kT6_x#GtjCtOqc}C6y@A2P|J(Fk0j$
+z$qC2D<&Rz&@9a;05(F`4fn}=>o<%|k-NP(kVEUL6Ks_%UjWFQI;%w3Ot~ijw!K94F
+z`pcL-5KoZrW1tvmJCJBd{{4kR$Goh`0p{zivqvsy*XpKn@8eyZt%+!SSd7dqWo8&x
+ztu(;REKwMvZIgi4Nr-o3{lcg`^TksgKhtjkghml)ZK}Nu7p%=XrS?#SGGcPUq-Z6?
+z@a6RUa>j}IB~GSz)FIMch2=3eSfFn9hM&l()+qK6%07s0JNr{5{~E<)L<bKyr7{5j
+zno7-d(ldI5W^9mV;Qty$Vgx)W@e>fS$`1CR%uOhRa*Yn1rjr@&$)6p0I_qB}gMo4q
+z?8VbP5ied@%9OH;#ZrD|f+zCuP1tg|M~a0Y0EZ~tmdBrab}g2!ke6Y5z}oca0D#m1
+zM$^AecowR>n9CPu(atYY6p%nMlE=~nb@Hz(i%%*On@7e*<R&_9%S)MKUyJ}w*P0+F
+z6;$bC2O?`Qa;E%v{R#R0nNj)Sr6azSJUyFwo@Uf^k(iv%6*5!%5Sf3yy9W93bB8;m
+z<enT23<~)Y9%7ss$zJ9koXO-D(u=f2#UybasnSRho`ypv(1ET(M6YBD`zH1hfe!74
+z4CM^(z$GBiGvL>PB8)&$BdmcJnm?FG$&Zg8uk?r_FWc86`;@ZM7&>6PR)d}62f58e
+z^#D84$NaegYE1rgeQW?r0x;^*#`3+hhdPlw+$eNZElHiAVz3}-zeSn~%;yKh0&E2M
+zQ4qac1%HE2gd1HdtjC|=HH9@lXFU(S+;RX0kN1QgR1P0k1iGRI<gZ>iwm9%)PXGn(
+zWpq%pz<O2r)r7(dGX@ik*y64tU}+K2q^y5wR0h6rrlTPPrZ@=C3MbK0JS_Mqgt0zO
+zSXt3Tc5)eie1;>1x>-SbKWSF0d8VRRo9~GTM;lUbnhU4VWzhV7q?|SOLtzn34h#)<
+zuw>+0%{nG#I7DGpYd5N77|0OU%Ze@vF`i+uGbCi*k%kvB5df)x$Dq)HF$|}3oxqto
+zid1+@NrFX?WGUv6`YCrhNJlb`A(+s{V&&sYV=_K*_^FZX;&cw`Px(%1AyX)%XEGS#
+zA+L^1`7_0&%uPWCHhJ&>nR!g*;$$33tYMCUD(^wWm<4H#&fq@hz_P7l>rIpw@a9)S
+zk?O8$#`+`uLy;`BZdJ`LcEN<mdOE9CYXb~2^DB3R26FB^e>qTw2`fPG*0=H551asB
+z*JJz#Deh%!0KC=>(;+DCiSXr2zL-TegXMvparp6I7Dwg8xL~JCz#=izLxUoWU2#nV
+z(`YJp_7q%H4Cn?Bm(hCA&y-=Z$Z~eUs3A+HlMRR@v&L-RKwShS5iF<S6hRtbH=0N+
+z=jS1s8jMzn`XSDgc@{vjDRZp~NKI1439Mwgxj<xY(%vlF6E+vGaC#^ud7Y!brhuTI
+zf%78~RGd4;0cu__5NF3=I7!$T8=2Ase0?aFPL6l<YsL+OMjqtk61gc7@nI;*IML(C
+z^%Tjkk*=Us66G_9u<J~)I4T=qaV-8wMirjk`Zj)kE|Pf@L`tJ#P9VxKAbX6=lQExy
+zijQBQF!=xSTz$;9e18ZOy<Ij56T$&C%vQTmV^hIoh|D%wA+VdRynPTMLqS{sbA}1%
+zMaK}_BBbI7x(fG+_i^@;V0B{5Vwi+2@j4QYMB@pLr?G4<b5s87nc<7r6>-{7=UJkb
+zXjG)XPvFjw>8Qblj~EgqSUGTEJTs79TLT;}y3v%!0J5FH#8s8pu{^`(&ANff9N1p7
+zOYCB(`M{9;;KdV{0@qC{ay%9Ra7n6<Td+ebrQDG@vKC6ss3V1aPvPVHXHLlNlZQG7
+zDwhH15e5Vi<dj8l?kJ4JCn={Q$LYX%Xk^@h^Q0sfF$cnB;vmbbUu%Oe#*koLcpKCl
+zKliA5wXb|N>e76$mo;m>-7v^xXh$67;1_zFjgA@{BbtB!D-%vr_NEjPeh>@*V|DrI
+zQ{zkFY&ORVLvnye4Q(-ftoW*KZHPYVqax(!GJfi8&Apl$wLqRVD$mW0${#!z`f_MO
+zaShlFins7@-Q*i@c7?xL=0QUuM1%z!C3qv>#qn6ss8u#pxf4WfDp9Yt*R7gTs&V<>
+zUpdt|P;vDV>smApYCY-tKp<t5ZZMY+BlD=9nX41Pir1m4Z*+?RVa^zoKL<Bm+#owa
+zhak=u3D*7sVCS*$w;T_{`9CbIMIwDDbjqz%0MV#AikC>;;H?lSmHjZwKzS#*Hfjm{
+ziPI@DltU05oXzF4S96QS^t@;3-HJ#Xkw;!Qoaivm?-ZOVpCS1OF^c1K*#qcFiwFpn
+zV&ZIvsocOdx&E_o&YX+}V1rl;jO34vKe1NHbmpzcr}+@u<X;{Nw|*0zBQi+I@l*N1
+z<VYo0X0=8uc%v<qFZ36Llce&6TR_#DmlfZvYjL6q6YwNvqi#b^ZkQZ^M4RnRv!PCi
+zwj9vp`xnPX;stmglq}wHz^LCBlgFpV-xwsTJb-lkH>kEwUYoPSOeymwlw>knRO`G!
+zM!qWstG#l@w9#PBU|aszGsmu>8ss>FCzbfPwn!2L#)&FYaT+`p#=PSuqf?pb^zyu#
+zZhtW>>=uY=F~ECIA5HaTeoiftCeVgtD*bfFsh`ptKhiK4!GYtWYZ+=Y8i+Vnv0z-p
+za?HUrGXNpz1fLEt*;fpUBF=dWkqM`K;6Y?mv*wcZ<5QewZYh`H-%@JiDK{RH-+ukj
+z7_AO5A&eprbWqhp0o!mlV=_V2#eS81LYXu?2}oR9WzcotmVrDzdAOrZfVt(P3jy9V
+zS|wW29nn|LqGf<tjLc9H=UkNlDKtPF3e~6PZHka+6%vGVp@$<q8V?qQfmMJ5JODm1
+z+SL{%Qwz|Dj*1PzxoIT)D&T6CqRsY@&5~w%QGJZvE>i?FA30xk1nlUbnL#oPhJD}~
+z6T+!F0c{YB0tg=@NJ3#;-Qm#!0lb%g@#^8(?)8K&u-O%%xd~1aFq1yOJ+%qY3HXVr
+zxgZ64I17tY&`lG7<nm9xe!Qbm^@bXuh8Uac$pWtef_MvSlbiq*m@QiRptC?G#~Cz5
+zrqcP>OEdZO6&eO>c20*B1<;qM2Ks<4C*3&R^}qo#Qu&WB9eE}I9p!nz`8gacbqOk>
+zOAR0gUOVwM&pi-&i=dQJMwrfL(xo)wLV5-z6CSJo9*{hZ^!z93r%!h8FR54(gB6)e
+zC`ZHjqT6k0Up&-_s`QO2k$8uD6ad%csFX`Ta5pDh@oH}{SH1>=!}<ohD9cSo!(gsh
+zGkJx21#|>8<b<qu@!(v*G89q(a&dB2ROiWR;k9a@y$Mzj%%fNINEd5l`J1CzRRyOZ
+z{Xra`t%eE1C(Yx&z!Z1m^3qhcINMiV%AjQ1gE>O}#|uYBy2{qO3nM?i@N86X(vErJ
+z`WH^gb1xk}5poI#c=<>~8G%h(W|bl>)Pip$1=^M>asXj*aJwy>f;Jk332Dbk>jTCX
+z$ppNvLZe(L1HHDCrLhRcAWV`Az*M+_q@=A<D5z}zRk47&34)T^L|cC6wUIM{e1;0C
+zAV;VW)-9)_@Ueib53Y+tt^DwX@vrvZxKI{NNoqIbhUN-AR@rl>NWMREWF$UECO)}g
+z13hxSq^0CP937idR~fK?-iBR5dIH9RJ>klR_o6}4Wtr97Xz)<}GJUM0yLBKC14OtI
+zB2d}YZPaed*U<2{B1((EUl;#ZHrU64ivvnIk2bi`rU>}-s!>NXtjr&dP$t^DcBEJ%
+zl^N+1^XbXgg*b<Xo|_ZeJ2-3%2ZFwPxxpc&a9kv`ru^l_QxVi#+hkL><+)=gJF%5?
+zwpf~6&KGidyae{1$jx)18^AY|S)7^A78G{}wEzLZVq=a1dJ<Ftix!NFZ2HP<wn#3I
+zuy~ZxCRO{#8_2rqy~5|pd-jxjM<%E+3R*hkdxZESsO{j%<1d8>St;<Z3#wy?AP_HZ
+zTdASd?Fqg-;TL}Sch4T}gk3a`J>3x_D#9y+D`ghb6Z2}FLt<!OUX<fPCsaJ5?h(1z
+zD2U*QyJ(ouQ&J5viNRPJDTN2myn$(P3vAuAT?#QcnOQ7m^60M%6vn`oDhEftj}8M^
+zqPC`7#oz=|@zP{&VF{P{3gB7reNWPLG4I7U&qW#KAvwCas6Plq@3IlBfnC*wdQiye
+z`5C$?GfY7?Lzy2{^O)Dgr1wPvOaKbZjt$9=&xTT-yKtykRtR(M%G}H2o!FehJx<n#
+z%2p^U5=4M{%i##GxO<^E76^kuVoaSqPle%7nDN~5(kgYn$;K@`cT!RAbxCPlp<1;%
+zF5Lt=8r*|(XJZQ2$0`ICR2CN|h(QR~ojQPHCGp~Z64enXy5Je9gnLO&uOsbNzTSy^
+z@b_c|6#1fa1=2#^F;On4H@oN%elSRdVdf=(PYztII(TVr-?bmlrOhYaMA~<=u0zp@
+zF2r_A<+v?ZaPI+vz2M72>dvFHd_}hqNxuz$b&cvHs1k3$B&Rs)qTDo3yg$h=D10cW
+z14GT^Gnqx&s|bKx!as+yJPMsg*@?+ukhzSaT#zD@Uq5`k?>@4V-+FJzhOb)n3<+MH
+z0cufoCSHPm1rs9s?l>w201F6VGF)*0)lKyPTABQ0@<iw0oz5Wcry*a%_>aT@X3O!N
+zAFxBJYDm>of|mIH3F&CB0P=(z$I<ERJaPMr^H<b*C)*8hoOp)Rh;WjB{I${Uz3m8b
+zSiulq-lj!5nHmB%U3np`LpXqUJ&z~cZ^h+6_d;OIlW}5a3}ab6(GrHzG=WBltGRvP
+z5~r4}JnLl0A;!Yl90p*TI5@{?Dt_vqh(7w$>Ay|LKPt-5^D2_dvsX{blgmNh=km<*
+z%W}Q=(w}{I+2?x^<inUut_;afFGu8eFHgw-z5JSd=FR8i-pcdxpI2UxKVJEQ{0^R1
+z@O*aV`Hx<I^M8EOzkFQ&-qo-?bM@uWX@xxH2Um`Ucrieq|9SOG@-MHRlOu2an|$h9
+zUy(a+z53Cc-`Y$*Uj()~OOgV617}vi#V-Dd8XSI7SXDni`sCW<_~0yX2LA?2iqDrn
+z+S|Gl_GRUZ?;exyy?b81@NQP_{QfsT`kQw%zU9*>rBSlcXwzMWyor2u`VT~yfZmi@
+mfqCbCLNEq3AO2SOb6i3(TO0N&|NPdgf>ULuyXx_~^8WxP(E%y|
+
+delta 12298
+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
+
+diff --git a/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log b/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+index 26a8b9b..45628b3 100644
+--- a/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
++++ b/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+@@ -1816,3 +1816,17 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: end tag nam
+ 2017-05-03 22:25:07,563 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+ 2017-05-03 22:25:07,565 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+ 2017-05-03 22:25:07,565 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
++2017-05-03 22:42:15,463 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\KIT\4te Semester\SoftwareTechnik\Workspace2\iMage
++2017-05-03 22:42:15,463 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dmaven.test.skip=true -DskipTests package
++2017-05-03 22:49:05,120 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
++2017-05-03 22:49:05,122 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
++2017-05-03 22:49:05,126 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
++2017-05-03 22:49:05,126 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
++2017-05-03 22:49:07,990 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
++2017-05-03 22:49:07,991 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
++2017-05-03 22:49:07,995 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
++2017-05-03 22:49:07,996 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
++2017-05-03 22:49:58,165 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
++2017-05-03 22:49:58,168 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
++2017-05-03 22:49:58,172 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
++2017-05-03 22:49:58,172 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+diff --git a/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java b/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java
+index 1d9c9f4..48823b3 100644
+--- a/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java
++++ b/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java
+@@ -68,7 +68,7 @@ import org.jis.options.Options;
+ public class Generator {
+   public final static double ROTATE_90  = Math.toRadians(90);
+   public final static double ROTATE_270 = Math.toRadians(270);
+-  //public final static double ROTATE_180 = Math.toRadians(180);
++  public final static double ROTATE_180 = Math.toRadians(180);
+ 
+   private Main               m;
+   private Options            o;
+@@ -743,7 +743,7 @@ public class Generator {
+       height = image.getWidth(null);
+     }
+     
+-    /*else if(rotate == Generator.ROTATE_180)
++    else if(rotate == Generator.ROTATE_180)
+     {
+     	transform.translate(height, 0);
+     	transform.rotate(Generator.ROTATE_90);
+@@ -752,7 +752,7 @@ public class Generator {
+         width = image.getWidth(); // swap
+         height = image.getHeight();
+     	
+-    }*/
++    }
+     else
+     {
+       throw new IllegalArgumentException("degree must be a mutiple of 90�!");
+-- 
+2.12.2.windows.2
+
