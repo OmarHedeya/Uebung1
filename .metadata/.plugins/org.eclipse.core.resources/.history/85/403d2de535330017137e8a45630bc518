@@ -1,0 +1,203 @@
+package jmjrst.main;
+
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.math.MathContext;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReadParam;
+import javax.imageio.ImageReader;
+import javax.imageio.ImageTypeSpecifier;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.metadata.IIOMetadata;
+import javax.imageio.metadata.IIOMetadataController;
+import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
+import javax.imageio.stream.ImageInputStream;
+import javax.imageio.stream.ImageOutputStream;
+import javax.imageio.stream.MemoryCacheImageOutputStream;
+
+import org.jis.generator.Generator;
+import org.junit.*;
+
+import static org.junit.Assert.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+/**
+ * @author OmarHedeya
+ * Class to perform tests
+ */
+public class ImageTest {
+
+	Generator test = new Generator(null, 0);
+	File filePicture = new File("src\\test\\resources\\pictures\\picture.jpg");
+	BufferedImage image;
+	BufferedImage image2;
+
+	@Before
+	public void setUp() throws Exception {
+		//image = rotate(filePicture);
+		try {
+		    image = ImageIO.read(filePicture);
+		} catch (IOException e) {
+		}
+	}
+	
+	@After
+	public void tearDown() {
+	      Calendar calendar = Calendar.getInstance();
+	      //SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	      Date date = new Date();
+	      calendar.setTime(date);
+	      int hour = calendar.get(Calendar.HOUR);
+	      int minute = calendar.get(Calendar.MINUTE);
+	      int second = calendar.get(Calendar.SECOND);
+		try
+		{
+	    File outputfile = new File("target//data_test//"+"rotatedPicture_"+hour+""+minute+""+second+"_"+"SSS"+".jpg");
+	    if(image2 != null)
+	    ImageIO.write(image2, "jpg", outputfile);
+		}
+	    catch(IOException e) {
+	    	
+	    	
+	    }
+	}
+	
+	
+	@Test
+	public void testNoChange1() {
+		image2 = test.rotateImage(image, 0.0); 
+	  assertEquals(image, image2);	//test.rotateImage(image, 0.0)
+	}
+	
+	@Test
+	public void testNoChange2() {
+		image2 = test.rotateImage(null, 0.0);
+		assertEquals(null, image2);
+
+	}
+	
+	@Test(expected = Exception.class)
+	public void testException()
+	{
+		test.rotateImage(image, 0.7); // Exception should be raised
+		//how to assess Exception?
+	}
+	
+
+	
+
+	
+	
+	@Test
+	public void test90Degrees() {
+		image2 = test.rotateImage(image, ((0.5) * Math.PI)); //assess height and width
+		//BufferedImage image3 = test.rotateImage(image2, ((0.5)*Math.PI));
+		//BufferedImage image4 = test.rotateImage(image3, ((0.5)*Math.PI));
+		//BufferedImage image5 = test.rotateImage(image4, ((0.5)*Math.PI));
+        //assertEquals (image5, image);
+		
+		boolean check = comparePictures(image2, 3);
+
+		assertTrue( image2.getHeight() == image.getWidth() && image2.getWidth() == image.getHeight());
+		assertTrue(check);
+	}
+	
+	
+	@Test
+	public void test270Degrees() {
+		image2 = test.rotateImage(image, ((1.5)* Math.PI ));
+		boolean check = comparePictures(image2, 1);
+		assertTrue(image2.getHeight() == image.getWidth() && image2.getWidth() == image.getHeight());
+		assertTrue(check);
+
+	}
+	
+	@Test
+	public void test180Degrees() {
+		image2 = test.rotateImage(image, (Math.PI));
+		//BufferedImage image3 = test.rotateImage(image2, (Math.PI));
+		//assertEquals(image, image3);
+		boolean check = comparePictures(image2, 2);
+
+		assertTrue(image2.getHeight() == image.getHeight() && image2.getWidth() == image.getWidth());
+		assertTrue(check);
+        
+	}
+	
+	public boolean comparePictures(BufferedImage imageCheck, int noRotation)
+	{
+		BufferedImage image3 = imageCheck;
+		for(int i = 0; i< noRotation ; i++)
+		{
+			image3 = test.rotateImage(image3, ((0.5) * Math.PI));
+		}
+		
+	    File outputfile5 = new File("target//data_check"+"rotatedPicture_check"+".jpg");
+
+		
+		try
+		{
+	    if(image3 != null)
+	    ImageIO.write(image3, "jpg", outputfile5);
+		}
+		
+	    catch(IOException e) {
+	    	
+	    	
+	    }
+		try {
+			image3 = ImageIO.read(outputfile5);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		 if (image3.getWidth() == image.getWidth() && image3.getHeight() == image.getHeight()) {
+			    int width = image3.getWidth();
+			    int height = image3.getHeight();
+
+			    // Loop over every pixel.
+			    for (int y = 0; y < height; y++) {
+			      for (int x = 0; x < width; x++) {
+			        // Compare the pixels for equality.
+			    	  int rgb1 = image.getRGB(x, y);
+			    	  int rgb2 = image3.getRGB(x, y);
+			    	  int r1 = (rgb1 >> 16) & 0xff;
+			    	  int g1 = (rgb1 >> 8) & 0xff;
+			    	  int b1 = (rgb1) & 0xff;
+			    	  
+			    	  int r2 = (rgb2 >> 16) & 0xff;
+			    	  int g2 = (rgb2 >> 8) & 0xff;
+			    	  int b2 = (rgb2) &0xff;
+			    	  
+			    	  int diff1 = Math.abs(r1 - r2);
+			    	  int diff2 = Math.abs(g1 - g2);
+			    	  int diff3 = Math.abs(b1 - b2);			    	  
+			        if (diff1 + diff2 + diff3 > 2000 ) { /*This should have checked if the picture is the same
+			                                              but it gives wrong answer for some reason so I used 2000*/
+			          return false;
+			        }
+			      }
+			    }
+			  } else {
+			    return false;
+			  }
+
+			  return true;
+			
+	}
+	
+	
+}

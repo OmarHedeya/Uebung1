@@ -1,0 +1,232 @@
+package jmjrst.main;
+
+import static org.junit.Assert.*;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.util.Vector;
+
+import javax.imageio.ImageIO;
+
+import org.jis.Main;
+import org.jis.generator.Generator;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import static java.nio.file.StandardCopyOption.*;
+
+public class SecondTest {
+	//resize Tests 
+	   //1- One picture //with generate image ----> choose suitable values
+	   //2- Directory with 3 pictures generate text
+	   //3- 0 Width and 0 Height
+	//Create Zip ---> with creteZip
+	   //1- One Picture
+	   //2- Three Pictures
+	//Main m = new Main();
+	Generator test = new Generator(null, 0);
+	File filePicture = new File("src//test//resources//pictures//picture.jpg");
+	File filePicture2 = new File("src//test//resources//pictures//siberian_tiger.jpg");
+	File filePicture3 = new File("src//test//resources//pictures//minions.jpg");
+	Vector<File> fileVector = new Vector<File>();
+	File inputDir = new File("src//test//resources//pictures");
+	File outputDir = new File("target//data_test//");
+	BufferedImage image;
+	BufferedImage image2;
+	
+	@Before
+	public void setUp() throws Exception {
+		//image = rotate(filePicture);
+		try {
+		    image = ImageIO.read(filePicture);
+		} catch (IOException e) {
+		}
+	}
+	
+	@After
+	public void tearDown()
+	{
+		System.gc();
+	}
+	
+	@Test
+	public void resizePortraitTest()
+	{
+
+		try {
+			image = ImageIO.read(filePicture);
+		} catch (IOException e1) {
+          assertTrue("Image not Found", false);
+		}
+		int widthToBe = (int)Math.floor((double)image.getWidth()/2.0);
+		int heightToBe = (int)Math.floor((double)image.getHeight()/2.0);
+		try {
+			test.generateImage(filePicture,outputDir , true, widthToBe,heightToBe ,"resizePortrait");
+		} catch (IOException e) {
+			assertTrue(false);
+		}
+		File outputImage = new File("target//data_test//resizePortrait" +filePicture.getName());
+		try {
+			image2 = ImageIO.read(outputImage);
+		} catch (IOException e) {
+           assertTrue(false);
+		}
+		int outWidth = image2.getWidth();
+		int outHeight = image2.getHeight();
+		assertTrue("The image could not be resized to these dimensions",(widthToBe == outWidth || widthToBe == outWidth - 1 || widthToBe == outWidth +1 ) && (heightToBe == outHeight || heightToBe == outHeight -1 || heightToBe == outHeight +1));
+	}
+	
+	@Test 
+	public void resizeLandscapeTest()
+	{
+
+		try {
+			image = ImageIO.read(filePicture2);
+		} catch (IOException e1) {
+          assertTrue("Image not Found", false);
+		}
+		int widthToBe = (int)Math.floor((double)image.getWidth()/2.0);
+		int heightToBe = (int)Math.floor((double)image.getHeight()/2.0);
+		try {
+			test.generateImage(filePicture2,outputDir , true, widthToBe,heightToBe ,"resizeLandscape");
+		} catch (IOException e) {
+			assertTrue(false);
+		}
+		File outputImage = new File("target//data_test//resizeLandscape"+filePicture2.getName());
+		try {
+			image2 = ImageIO.read(outputImage);
+		} catch (IOException e) {
+           assertTrue(false);
+		}
+		int outWidth = image2.getWidth();
+		int outHeight = image2.getHeight();
+		assertTrue("The image could not be resized to these dimensions",(widthToBe == outWidth || widthToBe == outWidth - 1 || widthToBe == outWidth +1 ) && (heightToBe == outHeight || heightToBe == outHeight -1 || heightToBe == outHeight +1));
+	}
+	
+	@Test
+	public void zipThreeFileTest() throws IOException
+	{
+		fileVector.add(filePicture);
+		fileVector.add(filePicture2);
+		fileVector.add(filePicture3);
+		File tempDir = new File("src//test//resources//pictures//temp");
+		Files.copy(fileVector.get(0).toPath(), new File(tempDir +"//" + filePicture.getName()).toPath(), REPLACE_EXISTING);
+		Files.copy(fileVector.get(1).toPath(), new File(tempDir + "//" + filePicture2.getName()).toPath(), REPLACE_EXISTING);
+		Files.copy(fileVector.get(2).toPath(), new File(tempDir + "//" + filePicture3.getName()).toPath(), REPLACE_EXISTING);
+        
+		File outZip = new File("target//data_test//Zip1.rar");
+		test.createZip(outZip, fileVector);
+		if(outZip.exists() && !outZip.isDirectory())
+		{
+			assertTrue(true);
+		}
+		else
+		{
+			assertTrue("ZipFile was not created",false);
+		}
+		fileVector.removeAllElements();
+		File copy1 = new File("src//test//resources//pictures//temp//"+filePicture.getName());
+		File copy2 = new File("src//test//resources//pictures//temp//"+filePicture2.getName());
+		File copy3 = new File("src//test//resources//pictures//temp//"+filePicture3.getName());
+		if(filePicture.exists())
+		{
+			filePicture.delete();
+		}
+		if(filePicture2.exists())
+		{
+			filePicture2.delete();
+		}
+		if(filePicture3.exists())
+		{
+			filePicture3.delete();
+		}
+		Files.copy(copy1.toPath(), new File(inputDir +"//" + copy1.getName()).toPath(), REPLACE_EXISTING);
+		Files.copy(copy2.toPath(), new File(inputDir +"//" + copy2.getName()).toPath(), REPLACE_EXISTING);
+		Files.copy(copy3.toPath(), new File(inputDir +"//" + copy3.getName()).toPath(), REPLACE_EXISTING);
+		copy1.delete();
+		copy2.delete();
+		copy3.delete();
+	}
+	
+	/*@Test
+	public void resizeThreePicturesTest()
+	{
+		test.generateText(inputDir, outputDir, 1024, 860); // would pictures be displayed?
+	}*/
+	
+	@Test
+	public void resizeAndOverwriteTest() throws IOException //why can't I correctly replace the file? Also try to do a new test where you compress the file two times
+	{
+		try {
+			image = ImageIO.read(filePicture2);
+		} catch (IOException e1) {
+          assertTrue("Image not Found", false);
+		}
+		int widthToBe = (int)Math.floor((double)image.getWidth()/2.0);
+		int heightToBe = (int)Math.floor((double)image.getHeight()/2.0);
+		fileVector.add(filePicture2);
+		File tempDir = new File("src//test//resources//pictures//temp");
+		InputStream filePic = new FileInputStream(filePicture2);
+		File outputHere = new File(tempDir + "//" + filePicture2.getName());
+		Files.copy(filePic, outputHere.toPath(), REPLACE_EXISTING);
+		//Files.copy(filePicture2.toPath(), new File(tempDir + "//" + filePicture2.getName()).toPath(), REPLACE_EXISTING);
+		File copy2 = new File("src//test//resources//pictures//temp//"+filePicture2.getName());
+
+		try {
+			test.generateImage(filePicture2,inputDir , true, widthToBe,heightToBe ,"");
+		} catch (IOException e) {
+			assertTrue(false);
+		}
+		File outputImage = new File("src//test//resources//pictures//"+filePicture2.getName());
+		try {
+			image2 = ImageIO.read(outputImage);
+		} catch (IOException e) {
+           assertTrue(false);
+		}
+		int outWidth = image2.getWidth();
+		int outHeight = image2.getHeight();
+		assertTrue("The image could not be resized to these dimensions",widthToBe == outWidth && heightToBe == outHeight);
+		
+		filePic.close();
+		fileVector.get(0).delete();
+		outputImage.delete();
+		outputHere.delete();
+		filePicture2.delete();
+		image2.flush();
+		System.gc();
+		File output2 = new File(inputDir +"//" + copy2.getName());
+		OutputStream outputStream = new FileOutputStream(output2);
+		Files.copy(copy2.toPath(), output2.toPath(), REPLACE_EXISTING);
+		copy2.delete();
+
+	}
+	
+	@Test @Ignore
+	public void resizeOnePictureNoWidthTest()
+	{
+		try {
+			test.generateImage(filePicture,outputDir,true, 300, 1024,"resizeOneZero");
+		} catch (IOException e) {
+			assertTrue(false);
+		}
+		File outputImage = new File("target//data_test//resizeOneZeropicture.jpg");
+		try {
+			image2 = ImageIO.read(outputImage);
+		} catch (IOException e) {
+           assertTrue(false);
+		}
+		int outWidth = image2.getWidth();
+		int outHeight = image2.getHeight();
+		assertTrue("Image must have width and height",0 == outWidth && 1024 == outHeight);
+		
+	}
+
+}

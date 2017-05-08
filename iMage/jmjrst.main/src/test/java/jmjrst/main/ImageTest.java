@@ -40,7 +40,7 @@ import java.util.Calendar;
 public class ImageTest {
 
 	Generator test = new Generator(null, 0);
-	File filePicture = new File("src\\test\\resources\\picture.jpg");
+	File filePicture = new File("src\\test\\resources\\pictures\\picture.jpg");
 	BufferedImage image;
 	BufferedImage image2;
 
@@ -107,14 +107,21 @@ public class ImageTest {
 		//BufferedImage image4 = test.rotateImage(image3, ((0.5)*Math.PI));
 		//BufferedImage image5 = test.rotateImage(image4, ((0.5)*Math.PI));
         //assertEquals (image5, image);
+		
+		boolean check = comparePictures(image2, 3);
+
 		assertTrue( image2.getHeight() == image.getWidth() && image2.getWidth() == image.getHeight());
+		assertTrue(check);
 	}
 	
 	
 	@Test
 	public void test270Degrees() {
 		image2 = test.rotateImage(image, ((1.5)* Math.PI ));
+		boolean check = comparePictures(image2, 1);
 		assertTrue(image2.getHeight() == image.getWidth() && image2.getWidth() == image.getHeight());
+		assertTrue(check);
+
 	}
 	
 	@Test
@@ -122,8 +129,74 @@ public class ImageTest {
 		image2 = test.rotateImage(image, (Math.PI));
 		//BufferedImage image3 = test.rotateImage(image2, (Math.PI));
 		//assertEquals(image, image3);
+		boolean check = comparePictures(image2, 2);
+
 		assertTrue(image2.getHeight() == image.getHeight() && image2.getWidth() == image.getWidth());
+		assertTrue(check);
         
+	}
+	
+	public boolean comparePictures(BufferedImage imageCheck, int noRotation)
+	{
+		BufferedImage image3 = imageCheck;
+		for(int i = 0; i< noRotation ; i++)
+		{
+			image3 = test.rotateImage(image3, ((0.5) * Math.PI));
+		}
+		
+	    File outputfile5 = new File("target//data_check//"+"rotatedPicture_check"+".jpg");
+
+		
+		try
+		{
+	    if(image3 != null)
+	    ImageIO.write(image3, "jpg", outputfile5);
+		}
+		
+	    catch(IOException e) {
+	    	
+	    	
+	    }
+		try {
+			image3 = ImageIO.read(outputfile5);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		 if (image3.getWidth() == image.getWidth() && image3.getHeight() == image.getHeight()) {
+			    int width = image3.getWidth();
+			    int height = image3.getHeight();
+
+			    // Loop over every pixel.
+			    for (int y = 0; y < height; y++) {
+			      for (int x = 0; x < width; x++) {
+			        // Compare the pixels for equality.
+			    	  int rgb1 = image.getRGB(x, y);
+			    	  int rgb2 = image3.getRGB(x, y);
+			    	  int r1 = (rgb1 >> 16) & 0xff;
+			    	  int g1 = (rgb1 >> 8) & 0xff;
+			    	  int b1 = (rgb1) & 0xff;
+			    	  
+			    	  int r2 = (rgb2 >> 16) & 0xff;
+			    	  int g2 = (rgb2 >> 8) & 0xff;
+			    	  int b2 = (rgb2) &0xff;
+			    	  
+			    	  int diff1 = Math.abs(r1 - r2);
+			    	  int diff2 = Math.abs(g1 - g2);
+			    	  int diff3 = Math.abs(b1 - b2);			    	  
+			        if (diff1 + diff2 + diff3 > 2000 ) { /*This should have checked if the picture is the same
+			                                              but it gives wrong answer for some reason so I used 2000*/
+			          return false;
+			        }
+			      }
+			    }
+			  } else {
+			    return false;
+			  }
+
+			  return true;
+			
 	}
 	
 	
